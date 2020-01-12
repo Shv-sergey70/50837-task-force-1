@@ -1,4 +1,4 @@
-INSERT INTO opinions(`dt_add`, `rate`, `description`) VALUES ('2019-08-19',3,'Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.
+INSERT INTO reviews(`created_at`, `rate`, `comment`) VALUES ('2019-08-19',3,'Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.
 
 Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.
 

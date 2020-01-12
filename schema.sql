@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 	`email`      VARCHAR(255)          NOT NULL                UNIQUE,
 	`password`   VARCHAR(255)          NOT NULL,
 	`name`       VARCHAR(255)          NOT NULL,
-	`city`       VARCHAR(255)          NOT NULL,
+	`address`    VARCHAR(255)          NOT NULL,
 	`avatar`     VARCHAR(255)          DEFAULT NULL,
 	`about`      TEXT                  DEFAULT NULL,
 	`birthday`   DATETIME              DEFAULT NULL,
@@ -30,9 +30,9 @@ CREATE TABLE IF NOT EXISTS `user_fail_counters` (
 
 CREATE TABLE IF NOT EXISTS `cities` (
 	`id`        INT(11)      UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	`name`      VARCHAR(255)          NOT NULL                UNIQUE,
-	`latitude`  FLOAT        UNSIGNED NOT NULL,
-	`longitude` FLOAT        UNSIGNED NOT NULL
+	`name`      VARCHAR(255)          NOT NULL,
+	`latitude`  FLOAT                 NOT NULL,
+	`longitude` FLOAT                 NOT NULL
 ) ENGINE = InnoDB
  DEFAULT CHARSET = utf8mb4
  COLLATE = utf8mb4_unicode_ci;
@@ -55,15 +55,16 @@ CREATE TABLE IF NOT EXISTS `executor_specializations` (
 
 CREATE TABLE IF NOT EXISTS `tasks` (
 	`id`          INT(11)      UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	`todo`        TEXT                  NOT NULL,
+	`name`        TEXT                  NOT NULL,
 	`description` TEXT                  NOT NULL,
-	`category`    INT(11)      UNSIGNED NOT NULL,
-	`location`    VARCHAR(255)          DEFAULT NULL,
+	`address`     VARCHAR(255)          DEFAULT NULL,
 	`budget`      BIGINT(20)   UNSIGNED DEFAULT NULL,
 	`expires_at`  DATETIME              NOT NULL,
 	`status`      VARCHAR(255)          NOT NULL DEFAULT 'new',
+	`latitude`    FLOAT                 NOT NULL,
+	`longitude`   FLOAT                 NOT NULL,
 	`customer_id` INT(11)      UNSIGNED NOT NULL,
-	`executor_id` INT(11)      UNSIGNED NOT NULL,
+	`executor_id` INT(11)      UNSIGNED DEFAULT NULL,
 	`category_id` INT(11)      UNSIGNED NOT NULL,
 	`created_at`  DATETIME              NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE = InnoDB
@@ -93,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `reviews` (
 	`id`          INT(11)   UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	`user_id`     INT(11)   UNSIGNED NOT NULL,
 	`reviewer_id` INT(11)   UNSIGNED NOT NULL,
-	`value`       TINYINT(1)         NOT NULL,
+	`rate`        TINYINT(1)         NOT NULL,
 	`comment`     TEXT               NOT NULL,
 	`created_at`  DATETIME           NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE = InnoDB

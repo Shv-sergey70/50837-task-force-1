@@ -48,3 +48,5 @@ foreach ($tablesNames as $tableName) {
 	
 	$sqlFileCreator->createDumpFile();
 }
+
+echo 'Successfully completed';

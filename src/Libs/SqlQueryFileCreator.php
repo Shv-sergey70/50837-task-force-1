@@ -109,7 +109,7 @@ class SqlQueryFileCreator {
 	 * @return string
 	 */
 	protected function getImplodeTableColumns(): string {
-		return '(`' . implode('`, `', $this->columns) . '`)';
+		return '(`' . trim(implode('`, `', $this->columns)) . '`)';
 	}
 	
 	/**
